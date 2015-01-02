@@ -1,0 +1,17 @@
+# lines starting with a '#' 
+	or with a space are ignored
+	
+# these are the rotor starting positions. you can choose from 0 to 35 for each 
+1 5 23
+
+# below this add the connection files of each of the 3 rotors.
+components/rotorA.txt
+components/rotorB.txt
+components/rotorC.txt
+
+# this is the name of the file where the encoded message will be written
+encoded_message.txt
+
+# the plugboard file. you can comment or delete it if you don't want to use a plugboard
+components/plugboardA.txt
+
