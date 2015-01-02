@@ -1,6 +1,6 @@
-Amendigma is a personal project to emulate the WW2 german cypher machine, Enigma. It allows you to encode and decode alphanumeric messages using the same algorythm of the machine, although it can also encode numeric digits, not just alphabet letters. Symbols that are not recognized will not be changed.
+###Amendigma is a personal project to emulate the WW2 german cypher machine, Enigma. It allows you to encode and decode alphanumeric messages using the same algorythm of the machine, although it can also encode numeric digits, not just alphabet letters. Symbols that are not recognized will not be changed.
 
-####NOTE: The config.txt file is required, as well as files for the rotors (There are some in the 'components' folder). The plugboard is optional (no plugboard is the civilian version).
+#####NOTE: The config.txt file is required, as well as files for the rotors (There are some in the 'components' folder). The plugboard is optional (no plugboard is the civilian version).
 
 ####To encode: ##
 	1. Write your message into a text file. Take note of the rotors used, rotor settings and plugboard used (These are all on the config.txt file)
