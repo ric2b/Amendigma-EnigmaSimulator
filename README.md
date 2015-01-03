@@ -16,4 +16,6 @@
 	2. Provide the filename as an argument to the script. Can also drag and drop the file onto the scrip on some python installations.
 	3. The decoded message will be written onto the file specified in the config.txt file.
 
+You can see a very brief explanation of the Enigma machine here: https://www.youtube.com/watch?v=ASfAPOiq_eQ
+
 - amends softwaresTM
