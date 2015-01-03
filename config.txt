@@ -1,5 +1,5 @@
 # lines starting with a '#' 
-	or with a space are ignored
+	or starting with a space, tab or left empty are ignored
 	
 # these are the rotor starting positions. you can choose from 0 to 35 for each 
 1 5 23
