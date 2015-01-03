@@ -12,6 +12,6 @@ components/rotorC.txt
 # this is the name of the file where the encoded message will be written
 encoded_message.txt
 
-# the plugboard file. you can comment or delete it if you don't want to use a plugboard
+# the plugboard file. you can comment or delete the next line if you don't want to use a plugboard
 components/plugboardA.txt
 
