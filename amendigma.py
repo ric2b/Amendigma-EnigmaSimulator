@@ -12,7 +12,7 @@ myAlphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
 def check_args():
 	""" checks if a file was supplied to the script """
 	if len(sys.argv) != 2:
-		print "(E) Usage: python " + sys.argv[0] + " <message_file>\n"
+		print ("(E) Usage: python " + sys.argv[0] + " <message_file>\n")
 		exit()
 	else:
 		return sys.argv[1], currentDir + "config.txt"
@@ -22,7 +22,7 @@ def ignoreComments(filename):
 	try:
 		f = open(filename, 'rU')
 	except IOError:
-		print "(E) Failed to open the settings file '" + filename + "'."
+		print ("(E) Failed to open the settings file '" + filename + "'.")
 		exit()
 
 	parsedLines = []
@@ -46,19 +46,19 @@ def Setup(settingsFile):
 	destinationFile	= currentDir + "encoded.txt"
 
 	if settingsFile != None:
-		#print currentDir
+		#print (currentDir)
 		lines = ignoreComments(settingsFile)
 		'''
 		try:
 			f = open(settingsFile, 'rU')
 		except IOError:
-			print "(E) Failed to open the settings file '" + settingsFile + "'."
+			print ("(E) Failed to open the settings file '" + settingsFile + "'.")
 			exit()
 
 		lines = f.readlines()
 		'''
 		if len(lines) > 6:
-			print "(W) The settings file has more than 6 lines, remaining ones will be discarded"
+			print ("(W) The settings file has more than 6 lines, remaining ones will be discarded")
 
 		temp = lines[0].rstrip()
 		rotorPositions[0] = int(temp.split(' ')[0])
@@ -71,7 +71,7 @@ def Setup(settingsFile):
 		destinationFile = currentDir + lines[4].rstrip()		
 		if len(lines) < 6:
 			plugboardFile = None
-			print "(W) running without a plugboard (civilian version)."
+			print ("(W) running without a plugboard (civilian version).")
 		else:
 			plugboardFile = currentDir + lines[5].rstrip()
 			
@@ -89,7 +89,7 @@ def readMessage(messageFilename):
 	try:
 		f = open(messageFilename, 'rU')
 	except IOError:
-		print "(E) Failed to open '" + messageFilename + "'."
+		print ("(E) Failed to open '" + messageFilename + "'.")
 		exit()
 	
 	message = f.read()
@@ -117,17 +117,15 @@ def getPlugboard(plugboardFile):
 	try:
 		f = open(plugboardFile, 'rU')
 	except IOError:
-		print "(E) Failed to open '" + plugboardFile + "', will run with unconnected plugboard."
+		print ("(E) Failed to open '" + plugboardFile + "', will run with unconnected plugboard.")
 		return None
-	for digit in string.digits:
-		plugboard[digit] = digit
 
-	for character in string.lowercase:
+	for character in myAlphabet:
 		plugboard[character] = character
 
 	lines = f.readlines()
 	if len(lines) > 18:
-		print "(W) plugboard file has more lines than expected, will discard after 18 lines. Remember, connecting x to y will also connect y to x."
+		print ("(W) plugboard file has more lines than expected, will discard after 18 lines. Remember, connecting x to y will also connect y to x.")
 	for i in range(0, len(lines)):
 		x = lines[i][0]
 		y = lines[i][2]
@@ -147,12 +145,12 @@ def getRotor(rotorFile):
 	try:
 		f = open(rotorFile, 'rU')
 	except IOError:
-		print "(E) Failed to open '" + rotorFile + "'."
+		print ("(E) Failed to open '" + rotorFile + "'.")
 		exit()
 
 	lines = f.readlines()
 	if len(lines) != 36:
-		print "(E) rotor file '" + rotorFile + "' does not have exactly 36 lines, can't be used." 
+		print ("(E) rotor file '" + rotorFile + "' does not have exactly 36 lines, can't be used.") 
 		exit()
 	
 	for i in range(0, 36):
@@ -199,7 +197,7 @@ def travelRotor(character, rotor, direction, rotorPosition = 0):
 def travelReflector(character):
 	# pair all the characters in a random way
 	firstHalf	= {'a':'3', 'b':'4', 'c':'x', 'd':'v', 'e':'y', 'f':'0', 'g':'2', 'h':'w', 'i':'t', 'j':'9', 'k':'7', 'l':'z', 'm':'1', 'n':'5', 'o':'s', 'p':'8', 'q':'6', 'r':'u'} # 36/2 = 18 
-	secondHalf	= {v: k for k, v in firstHalf.iteritems()}
+	secondHalf	= {v: k for (k, v) in firstHalf.items()}
 
 	reflected = character
 
@@ -256,7 +254,7 @@ plugboard, rotor1, rotor2, rotor3, rotorPositions, destinationFile = Setup(setti
 message = readMessage(messageFile)
 transcodedMessage = transcodeMessage(message, plugboard, rotor1, rotor2, rotor3, rotorPositions)
 
-print '\n' + transcodedMessage + '\n'
+print ('\n' + transcodedMessage + '\n')
 
 if destinationFile != None:
 	try: 
@@ -264,6 +262,6 @@ if destinationFile != None:
 		f.write(transcodedMessage)
 		f.close()
 	except IOError:
-		print "(E) Unable to write the output file."
+		print ("(E) Unable to write the output file.")
 
 #raw_input("Press Enter to continue...")
